@@ -33,8 +33,13 @@ RUN apt-get update && \
 COPY setup.sh /root
 
 # ARG username=acetcom
-RUN useradd -m --uid=1000 ${username} && \
-    echo "${username} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${username} && \
-    chmod 0440 /etc/sudoers.d/${username}
+# RUN useradd -m --uid=1000 ${username} && \
+#     echo "${username} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${username} && \
+#     chmod 0440 /etc/sudoers.d/${username}
 
-WORKDIR /home/${username}
+RUN useradd -m --uid=1000 acetom && \
+    echo "acetcom ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/acetom && \
+    chmod 0440 /etc/sudoers.d/acetcom
+
+# WORKDIR /home/${username}
+WORKDIR /home/acetom
