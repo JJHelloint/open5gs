@@ -1,7 +1,8 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import styled from 'styled-components';
+// import styled from 'styled-components';
+import styled , { css, keyframes } from 'styled-components';
 import onClickOutside from 'react-onclickoutside';
 import CSSTransitionGroup from 'react-transition-group/CSSTransitionGroup';
 import { media, transitions } from 'helpers/style-utils';
@@ -38,11 +39,13 @@ class Modal extends Component {
 
   static defaultProps = {
     zindex: '500',
-    transitionEnter: `${transitions.stretchOut} .25s ease-in`,
-    transitionLeave: `${transitions.shrinkIn} .25s ease-in`,
+    transitionEnter: css`${transitions.stretchOut} .25s ease-in`,
+    transitionLeave: css`${transitions.shrinkIn} .25s ease-in`,
     transitionEnterTimeout: 300,
     transitionLeaveTimeout: 150
   }
+
+  
 
   handleClickOutside = (e) => {
     const { visible, onOutside } = this.props;

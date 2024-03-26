@@ -1,4 +1,4 @@
-import Document, { Head, Main, NextScript } from 'next/document'
+import Document, { Html, Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
 const description = 'an implementation of 3GPP EPC(MME, SGW, PGW, HSS)'
@@ -9,7 +9,7 @@ export default class MyDocument extends Document {
     const main = sheet.collectStyles(<Main />)
     const styleTags = sheet.getStyleElement()
     return (
-      <html>
+      <Html>
         <Head>
           <title>Open5GS</title>
 
@@ -32,7 +32,7 @@ export default class MyDocument extends Document {
           </div>
           <NextScript />
         </body>
-      </html>
+      </Html>
     )
   }
 }

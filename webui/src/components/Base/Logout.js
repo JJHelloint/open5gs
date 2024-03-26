@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 
-import styled from 'styled-components';
+// import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import oc from 'open-color';
 
 import { Modal } from 'components';
@@ -57,7 +58,8 @@ const Button = styled.button`
   transition: all .3s;
 `;
 
-const YesButton = Button.extend`
+// const YesButton = Button.extend`
+const YesButton = styled(Button)`
   border: 1px solid ${oc.red[9]};
   color: white;
   background: ${oc.red[7]};
@@ -69,7 +71,8 @@ const YesButton = Button.extend`
   }
 `;
 
-const NoButton = Button.extend`
+// const NoButton = Button.extend`
+const NoButton = styled(Button)`
   border: 1px solid ${oc.gray[5]};
   color: black;
   background: ${oc.gray[3]};
@@ -91,8 +94,8 @@ const Logout = ({ visible, onHide, onLogout }) => (
   <Modal 
     visible={visible} 
     onOutside={onHide} 
-    transitionEnter={`${transitions.slideDown} .5s ease-in-out`}
-    transitionLeave={`${transitions.slideUp} .5s ease-in-out`}
+    transitionEnter={css`${transitions.slideDown} .5s ease-in-out`}
+    transitionLeave={css`${transitions.slideUp} .5s ease-in-out`}
     transitionEnterTimeout={500}
     transitionLeaveTimeout={500}>
     <Wrapper>
