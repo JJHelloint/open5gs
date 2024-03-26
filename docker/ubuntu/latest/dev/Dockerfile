@@ -38,9 +38,10 @@ ARG username=acetcom
 #     chmod 0440 /etc/sudoers.d/${username}
 
 # Check if the user already exists before adding
-RUN getent passwd ${username} > /dev/null || \
-    ( useradd -m --uid=1000 ${username} && \
+RUN if ! id -u ${username} > /dev/null 2>&1; then \
+      useradd -m --uid=1000 ${username} && \
       echo "${username} ALL=(root) NOPASSWD:ALL" > /etc/sudoers.d/${username} && \
-      chmod 0440 /etc/sudoers.d/${username} )
+      chmod 0440 /etc/sudoers.d/${username}; \
+    fi
 
 WORKDIR /home/${username}
